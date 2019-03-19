@@ -1,2 +1,6 @@
 # printf
-In this repository you could find all the files, and branches created in order to do the printf functions. This project is doing by Rodrigo and Male.
+This branch punto0 has the code of the point 0 of the repository printf:
+Files inside:
+-Funtion filling the requirements of the point 0 project printf
+-Holberton.h has the functions and library
+-The main file
