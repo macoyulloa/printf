@@ -1,0 +1,78 @@
+_PRINTF()		printf man page		_PRINTF()
+
+
+NAME
+	printf - format and print data
+
+SYNOPSIS
+
+	#include "holberton.h"
+
+	_printf FORMAT [ARGUMENT]...
+
+DESCRIPTION
+
+	Print ARGUMENT(s) according to FORMAT:
+
+	FORMATS:
+
+	%c
+	%d
+	%i
+	%d
+
+EXAMPLE
+
+#include "holberton.h"
+
+/**
+ * main - examples and uses of the _printf()
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	char i = 'g';
+	char j[] = "cadena de caracteres";
+	char h = ' ';
+	int n = 321, m = 245;
+
+	_printf("Let's try to printf a simple sentence.\n");
+	/**print a character, variable char type**/
+	_printf("%c\n", i);
+	 /**print a string, variable char * type**/
+ 	_printf("%s\n", j);
+	/**more examples of the uses**/
+	_printf("hola Male, %c, funcionó\n", i);
+	_printf("hola mi nombre, %s, gracias\n", j);
+	_printf("hola mi nombre, %c, gracias\n", h);
+	/**print of number: integers and decimals numbers**/
+	_printf("hola mi, %d , gracias\n", n);
+	_printf("%d , gracias\n", m);
+	_printf("%i\n", n);
+	return (0);
+}
+
+SEE ALSO
+
+holberton.h
+this file conteins the library with the function _printf(().
+
+printf(3)
+The full documentation for printf is maintained as a Texinfo manual. If the info and printf programs are properly installed at your site, the command
+
+info coreutils aqprintf invocationaq
+should give you access to the complete manual.
+
+BUGS
+
+Report printf bugs to 
+xxx home page: <>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+
+AUTHOR
+
+Written by Rodrigo Cruz & Maria Alejandra Coy
+
+COPYRIGHT
+
