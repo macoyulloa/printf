@@ -7,14 +7,14 @@
  * Return: Number of printed characters.
  */
 int _printf(char *format, ...)
-{
-	char *s, *copia_format;
+{	char *s, *copia_format;
 	unsigned int i, j, count = 0, tam = 0, t = 0;
 	va_list arg;
 
 	va_start(arg, format);
-	copia_format = _copy(format);
-	tam = _count(copia_format);
+	tam = _count(copia_format = _copy(format));
+	if (format == NULL)
+		return (-1);
 	for (j = 0 ; j < tam; j++)
 	{
 	for (; copia_format[j] != '%' && copia_format[j] != '\0'; count++, j++)
@@ -23,8 +23,7 @@ int _printf(char *format, ...)
 	if (copia_format[j - 1] == '\0')
 		return (count - 1);
 	switch (copia_format[j])
-	{
-	case 'c':
+	{ case 'c':
 	i = va_arg(arg, int);
 		_putchar(i);
 		count++;
@@ -37,6 +36,7 @@ int _printf(char *format, ...)
 		break;
 	case '%':
 		_putchar('%');
+		count++;
 		break;
 	default:
 		if (copia_format[j - 1] == '%' && copia_format[j] != '\0')
