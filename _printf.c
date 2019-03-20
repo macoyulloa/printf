@@ -10,8 +10,7 @@
 int _printf(const char *format, ...)
 {	va_list variable;
 	int i = 0, j = 0, leng = 0, a = 0;
-	char print[1024];
-	char *p;
+	char print[10200], *p, n = '\0', s = '\n';
 
 	va_start(variable, format);
 	if (format == NULL)
@@ -21,27 +20,28 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
-			{
-				a = va_arg(variable, int);
-				print[leng] = a;
+			{	a = va_arg(variable, int);
+				if (a == n)
+					print[leng] = n;
+				else if (a == s)
+					print[leng] = s;
+				else
+					print[leng] = a;
 				leng++;
 			}
 			else if (format[i + 1] == 's')
-			{
-				p = va_arg(variable, char *);
+			{	p = va_arg(variable, char *);
 				for (; p[j] != '\0'; j++, ++leng)
 					print[leng] = p[j];
 			}
 			else if (format[i + 1] == '%')
-			{
-				print[leng] = '%';
+			{	print[leng] = '%';
 				leng++;
 			}
-		i++;
+			i++;
 		}
 		else
-		{
-			print[leng] = format[i];
+		{	print[leng] = format[i];
 			leng++;
 		}
 	}
