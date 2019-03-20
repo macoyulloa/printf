@@ -8,7 +8,7 @@
  */
 int _printf(char *format, ...)
 {	char *s, *copia_format;
-	unsigned int i, j, count = 0, tam = 0, t = 0;
+	unsigned int i, j, a = 0, count = 0, tam = 0, t = 0;
 	va_list arg;
 
 	va_start(arg, format);
@@ -34,16 +34,29 @@ int _printf(char *format, ...)
 		imp(s);
 		count = count + t;
 		break;
+	case 'i':
+	case 'd':
+	a = va_arg(arg, int);
+		if (a < 0)
+		{
+			a = -a;
+			_putchar('-');
+			count++;
+		}
+		t = _count(convert((unsigned int)a, 10));
+		imp(convert(a, 10));
+		count = count + t;
+		break;
 	case '%':
 		_putchar('%');
 		count++;
 		break;
 	default:
 		if (copia_format[j - 1] == '%' && copia_format[j] != '\0')
-		_putchar('%');
-	_putchar(copia_format[j]);
-	count++;
-	break;
+			_putchar('%');
+		_putchar(copia_format[j]);
+		count++;
+		break;
 	}
 	}
 	va_end(arg);
