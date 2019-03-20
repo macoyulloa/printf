@@ -8,13 +8,14 @@
  * Return: int.
  **/
 int _printf(const char *format, ...)
-{
-	va_list variable;
+{	va_list variable;
 	int i = 0, j = 0, leng = 0, a = 0;
 	char print[1024];
 	char *p;
 
 	va_start(variable, format);
+	if (format == NULL)
+		return (-1);
 	for (; format != NULL && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -30,6 +31,11 @@ int _printf(const char *format, ...)
 				p = va_arg(variable, char *);
 				for (; p[j] != '\0'; j++, ++leng)
 					print[leng] = p[j];
+			}
+			else if (format[i + 1] == '%')
+			{
+				print[leng] = '%';
+				leng++;
 			}
 		i++;
 		}
